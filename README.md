@@ -51,5 +51,8 @@ depth<-depth.fun(df,
                  percentiles=c(0.5,0.80,0.90))
 ```
 
+See `R/run_depth.R` for the example code described above and the plots shown below.
+
+
 ![depth](output/plot_radius_depth_metrics.png)
 

@@ -38,7 +38,7 @@ Load packages, functions, and input parameters.
 source("R/depth_FUN.R")
 ```
 
-Load in your TLS file in PTX format (other gridded formats may work, but are untested).
+Load in your TLS file in R. I wrote a function to read in PTX format files since I use these frequently, but really any single scan file with XYZ columns will work.
 ```{r,echo=FALSE}
 files<-list.files("input", full.names = TRUE)
 df<-read.ptx(files)

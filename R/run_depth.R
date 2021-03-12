@@ -27,7 +27,9 @@ df<-read.ptx(files)
 #run depth metric calculation
 depth<-depth.fun(df, 
                  zen_bin=5, 
-                 zen_range=, az_bin, percentiles)
+                 zen_range=c(0,55), 
+                 az_bin=10, 
+                 percentiles=c(0.5,0.80,0.90))
 
 
 #### Make some plots with ggplot ####
@@ -75,5 +77,5 @@ plot_grid(
       theme(legend.position= "none"),
     labels=c("B","C"), nrow=1),
   labels=c("A",NA), nrow=2, rel_heights = c(0.6,0.4))
-ggsave("output/plot_radius_depth_metrics.pdf", width = 3.75, height = 3.75*1.5, units = "in")
+ggsave("output/plot_radius_depth_metrics.png", width = 3.75, height = 3.75*1.5, units = "in", dpi=300)
 

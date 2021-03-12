@@ -4,6 +4,10 @@
 
 Algorithms described in "Vegetation structural complexity and biodiversity in the Great Smoky Mountains" (Walter et al. 2021; https://onlinelibrary.wiley.com/doi/10.1002/ecs2.3390) for generating a new complexity metric from single-scan terrestrial laser scanning (TLS) data. 
 
+If you use this metric please cite our study:
+
+Walter, J.A., Stovall, A.E.L., & Atkins, J.W. 2021. Vegetation structural complexity and biodiversity in the Great Smoky Mountains. Ecosphere 12:3. doi:10.1002/ecs2.3390
+
 The following algorithm is based in the R programming language.
 
 ## Load the Functions

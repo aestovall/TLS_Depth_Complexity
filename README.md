@@ -1,5 +1,7 @@
 # TLS Depth Complexity
 
+![tls](tls.png)
+
 Algorithms described in "Vegetation structural complexity and biodiversity in the Great Smoky Mountains" (Walter et al. 2021; https://onlinelibrary.wiley.com/doi/10.1002/ecs2.3390) for generating a new complexity metric from single-scan terrestrial laser scanning (TLS) data. 
 
 The following algorithm is based in the R programming language.

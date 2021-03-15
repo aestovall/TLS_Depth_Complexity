@@ -1,3 +1,9 @@
+center.cloud<-function(df, center=c(0,0,0)){
+  df[,1:3]<-cbind(df[,1]-center[1],
+                  df[,2]-center[2],
+                  df[,3]-center[3])
+  return(df)
+}
 
 read.ptx<-function(file, do.row.col=FALSE){
   require(data.table)
@@ -13,6 +19,8 @@ read.ptx<-function(file, do.row.col=FALSE){
 }
 
 cart.To.sphere<-function(df){
+  require(data.table)
+  colnames(df)[1:3]<-c("x","y","z")
   r <- sqrt(df$x^2 + df$y^2 +df$z^2)
   inc <- ((acos(df$z/r)))*(180/pi)
   az <- atan2(df$y,df$x)*(180/pi)
@@ -20,6 +28,7 @@ cart.To.sphere<-function(df){
 }
 
 depth.bin<-function(df, zen_bin, zen_range, az_bin){
+  require(data.table)
   zen_ls<-seq(zen_range[1],zen_range[2], by = zen_bin)
   df.az.ls<-lapply(zen_ls, function(x){
     range<-list(x,x+zen_bin)
@@ -34,7 +43,7 @@ depth.bin<-function(df, zen_bin, zen_range, az_bin){
 }
 
 depth.pctl<-function(depth.list, percentiles){
-  depth.list.pct<-lapply(depth.list, function(x){
+  depth.list.pct<-lapply(depth.list, function(x) {
     depth.pct<-aggregate(d~az_bin+zen_bin, data=x, function(x) quantile(x, percentiles))
     depth.pct<-data.frame(az_bin=depth.pct$az_bin,
                           zen_bin=depth.pct$zen_bin,
@@ -51,6 +60,7 @@ depth.metrics<-function(depth.list.pct){
   colnames(depth_sd)[1:length(percentiles)+2]<-paste0(colnames(depth_sd)[1:length(percentiles)+2],
                                                       "_sd")
   depth_metrics<-cbind(depth_mean[,-2], depth_sd[,-c(1:2)])
+  colnames(depth_metrics)[1:length(percentiles)+2]<-paste0(colnames(depth_sd)[1:length(percentiles)+2])
   return(depth_metrics)
 }
 
